@@ -1,5 +1,5 @@
 use crate::model::{ReactiveEntityInstance, ReactiveRelationInstance};
-use crate::reactive::connector::ConnectorProperties;
+use crate::reactive::ConnectorProperties;
 use serde_json::json;
 use std::collections::HashMap;
 use std::sync::Arc;
