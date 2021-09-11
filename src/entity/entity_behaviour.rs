@@ -3,6 +3,7 @@ use crate::BehaviourCreationError;
 use indradb::VertexProperties;
 use std::sync::Arc;
 
+// TODO: potentially remove the interface completely (no more in use)
 pub trait EntityBehaviour<T> {
     const TYPE_NAME: &'static str;
 
@@ -24,15 +25,14 @@ pub trait EntityBehaviour<T> {
     fn new_entity_instance() -> Arc<ReactiveEntityInstance>;
 }
 
-// TODO: remove this macro? No more in use?
-#[macro_export]
-macro_rules! entity_behaviour {
-    ($behaviour_name:ident, $behaviour_type:ty, $behaviour_operation_type:ty, $entity_type_name:expr, $f:expr) => {
-        pub struct $behaviour_name {}
-        impl $behaviour_name {}
-        impl $behaviour_type for $behaviour_name {
-            const TYPE_NAME_1: &'static str = $entity_type_name;
-            const OPERATION: $behaviour_operation_type = $f;
-        }
-    };
-}
+// #[macro_export]
+// macro_rules! entity_behaviour {
+//     ($behaviour_name:ident, $behaviour_type:ty, $behaviour_operation_type:ty, $entity_type_name:expr, $f:expr) => {
+//         pub struct $behaviour_name {}
+//         impl $behaviour_name {}
+//         impl $behaviour_type for $behaviour_name {
+//             const TYPE_NAME_1: &'static str = $entity_type_name;
+//             const OPERATION: $behaviour_operation_type = $f;
+//         }
+//     };
+// }

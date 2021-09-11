@@ -3,6 +3,7 @@ use crate::BehaviourCreationError;
 use indradb::EdgeProperties;
 use std::sync::Arc;
 
+// TODO: potentially remove the interface completely (no more in use)
 pub trait RelationBehaviour<T> {
     const TYPE_NAME: &'static str;
 
@@ -38,14 +39,14 @@ pub trait RelationBehaviour<T> {
     ) -> Arc<ReactiveRelationInstance>;
 }
 
-#[macro_export]
-macro_rules! relation_behaviour {
-    ($behaviour_name:ident, $behaviour_type:ty, $behaviour_operation_type:ty, $relation_type_name:expr, $f:expr) => {
-        pub struct $behaviour_name {}
-        impl $behaviour_name {}
-        impl $behaviour_type for $behaviour_name {
-            const TYPE_NAME_1: &'static str = $relation_type_name;
-            const OPERATION: $behaviour_operation_type = $f;
-        }
-    };
-}
+// #[macro_export]
+// macro_rules! relation_behaviour {
+//     ($behaviour_name:ident, $behaviour_type:ty, $behaviour_operation_type:ty, $relation_type_name:expr, $f:expr) => {
+//         pub struct $behaviour_name {}
+//         impl $behaviour_name {}
+//         impl $behaviour_type for $behaviour_name {
+//             const TYPE_NAME_1: &'static str = $relation_type_name;
+//             const OPERATION: $behaviour_operation_type = $f;
+//         }
+//     };
+// }
